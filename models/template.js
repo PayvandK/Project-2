@@ -10,15 +10,8 @@
  *
  */
 //const mongoose = require('./connection.js')
+const mongoose = require('mongoose');
 
-/* Step 1 alternative
- *
- * TODO: make a global variable to act as an in memory database. 
- * NOTE: doing this WILL NOT persist your data and you will loose
- * your data once you stop running your server.
- *
- */
-global.sampleModel = [];
 
 /* Step 2
  *
@@ -30,6 +23,9 @@ global.sampleModel = [];
 //  name: String
 //})
 
+const Schema = mongoose.Schema;
+mongoose.Promise = global.Promise;
+
 /* Step 3
  *
  * TODO: create collection API
@@ -37,7 +33,13 @@ global.sampleModel = [];
  *
  */
 //const SampleCollection = mongoose.model('Sample', SampleModelSchema)
-
+const UserSchema = new Schema ({
+  name: {
+    type: String,
+    required: true
+  },
+  
+})
 /* Step 4
  *
  * TODO: delete this it's just a sample
