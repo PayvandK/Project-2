@@ -5,59 +5,43 @@ const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const userSchema = new mongoose.Schema ({
-  event: {
+  name: {
     type: String,
     required: true
   },
-  band: {
+  username: {
     type: String,
     required: true
-  },
-  date: {
-    type: Date,
-    required: true
-  },
-  location: {
-    type: String,
-    required: true
-  },
-  experience: {
-    type: String,
-    required: false
-  },
-  image: {
-    type: String,
-    required: false
   }
 })
 
-const concertCollection = mongoose.model('concert', concertSchema)
+const userCollection = mongoose.model('user', userSchema)
 
-const getAllConcerts = () => {
-  return concertCollection.find({})
+const getAllUsers = () => {
+  return userCollection.find({})
 };
 
-const getConcert = (concertId) => {
-  return concertCollection.findById(concertId)
+const getUser = (userId) => {
+  return userCollection.findById(userId)
 };
 
-const addNewConcert = (newConcert) => {
-  return concertCollection.create(newConcert)
+const addNewUser = (newUser) => {
+  return userCollection.create(newUser)
 };
 
-const updateConcert = (concertId, newConcert) => {
-  return concertCollection.updateOne({_id: concertId}, newConcert)
+const updateUser = (userId, newUser) => {
+  return userCollection.updateOne({_id: userId}, newUser)
 };
 
-const deleteConcert = (concertId) => {
-  return concertCollection.deleteOne({_id: concertId})
+const deleteUser = (userId) => {
+  return userCollection.deleteOne({_id: userId})
 }
 
 module.exports = {
-  concertCollection,
-  getAllConcerts,
-  getConcert,
-  addNewConcert,
-  updateConcert,
-  deleteConcert
+  userCollection,
+  getAllUsers,
+  getUser,
+  addNewUser,
+  updateUser,
+  deleteUser
 }
