@@ -4,6 +4,7 @@ const methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 
 const { concertRouter } = require('./controllers/concert.js')
+const { userRouter} = require('./controllers/user.js')
 
 app.use(express.urlencoded({extended: true}))
 
@@ -15,6 +16,7 @@ app.use(express.static(__dirname+"/public"))
 
 app.set('view engine', 'hbs')
 
+app.use('/', userRouter)
 app.use('/', concertRouter)
 
 const PORT = process.env.PORT || 3000 

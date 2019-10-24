@@ -1,16 +1,17 @@
 
-const mongoose = require('./connection.js');
-
-const Schema = mongoose.Schema;
-mongoose.Promise = global.Promise;
+const mongoose = require('./connection.js')
 
 const userSchema = new mongoose.Schema ({
   name: {
     type: String,
     required: true
   },
-  username: {
+  location: {
     type: String,
+    required: true
+  },
+  age: {
+    type: Number,
     required: true
   }
 })
@@ -21,27 +22,26 @@ const getAllUsers = () => {
   return userCollection.find({})
 };
 
-const getUser = (userId) => {
-  return userCollection.findById(userId)
+const getUser = (id) => {
+  return userCollection.findById(id)
 };
 
-const addNewUser = (newUser) => {
-  return userCollection.create(newUser)
+const createUser = (UserData) => {
+  return userCollection.create(UserData)
 };
 
-const updateUser = (userId, newUser) => {
-  return userCollection.updateOne({_id: userId}, newUser)
+const updateUser = (id, UserData) => {
+  return userCollection.updateOne({_id: id}, UserData)
 };
 
-const deleteUser = (userId) => {
-  return userCollection.deleteOne({_id: userId})
+const deleteUser = (id) => {
+  return userCollection.deleteOne({_id: id})
 }
 
 module.exports = {
-  userCollection,
   getAllUsers,
-  getUser,
-  addNewUser,
+  getOneUser,
+  createUser,
   updateUser,
   deleteUser
 }

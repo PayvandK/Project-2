@@ -1,8 +1,4 @@
-
 const mongoose = require('./connection.js');
-
-const Schema = mongoose.Schema;
-mongoose.Promise = global.Promise;
 
 const concertSchema = new mongoose.Schema ({
   event: {
@@ -21,14 +17,8 @@ const concertSchema = new mongoose.Schema ({
     type: String,
     required: true
   },
-  experience: {
-    type: String,
-    required: false
-  },
-  image: {
-    type: String,
-    required: false
-  }
+  experience: String,
+  image: String
 })
 
 const concertCollection = mongoose.model('concert', concertSchema)
@@ -37,27 +27,31 @@ const getAllConcerts = () => {
   return concertCollection.find({})
 };
 
-const getConcert = (concertId) => {
-  return concertCollection.findById(concertId)
+const getAllConcertsByUserId = (userId) => {
+  return concertCollection.find({userId: userId})
 };
 
-const addNewConcert = (newConcert) => {
-  return concertCollection.create(newConcert)
+const getOneConcert = (id) => {
+  return concertCollection.findById(id)
+}
+
+const createConcert = (concertData) => {
+  return concertCollection.create(concertData)
 };
 
-const updateConcert = (concertId, newConcert) => {
-  return concertCollection.updateOne({_id: concertId}, newConcert)
+const updateConcert = (id, concertData) => {
+  return concertCollection.updateOne({_id: id}, concertData)
 };
 
-const deleteConcert = (concertId) => {
-  return concertCollection.deleteOne({_id: concertId})
+const deleteConcert = (id) => {
+  return concertCollection.deleteOne({_id: id})
 }
 
 module.exports = {
-  concertCollection,
   getAllConcerts,
-  getConcert,
-  addNewConcert,
+  getAllConcertsByUserId,
+  getOneConcert, 
+  createConcert,
   updateConcert,
   deleteConcert
 }

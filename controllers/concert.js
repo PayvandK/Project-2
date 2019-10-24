@@ -4,22 +4,34 @@ const concertApi = require('../models/concert.js')
 
 const concertRouter = express.Router()
 
+concertRouter.get('/concert/new', (req, res) => {
+  res.render('concert/createConcertForm')
+})
+
+concertRouter.get('/concert/new/:userId', (req, res) => {
+  res.render('concert/createConcertForm', {userId: req.params.userId})
+})
+
+concertRouter.get('/concert/edit/:id', (req, res) => {
+  concertApi.getOneConcert(req.params.id)
+    .then((singleConcert) => {
+      res.render('concert/editConcertForm', {singleConcert})
+    })
+})
+
 //getAll
 concertRouter.get('/concert', (req, res) => {
   concertApi.getAllConcerts()
-  .then((concerts) => {
-    res.render('concert/concerts', {concerts})
-  })
-  .catch((err) => {
-    console.log(err)
+  .then((allConcerts) => {
+    res.render('concert/allConcerts', {allConcerts})
   })
 })
 
 //getOne
 concertRouter.get('/concert/:id', (req, res) => {
-  concertApi.getConcert(req.params.id)
+  concertApi.getOneConcert(req.params.id)
   .then((singleConcert) => {
-    res.render(singleConcert)
+    res.render('concert/singleConcert', {singleConcert})
   })
 })
 
@@ -27,7 +39,7 @@ concertRouter.get('/concert/:id', (req, res) => {
 concertRouter.put('/concert/:id', (req, res) => {
   concertApi.updateConcert(req.params.id, req.body)
   .then((updatedConcert) => {
-    res.render(updatedConcert)
+    res.redirect(`/concert/${req.params.id}`)
   })
 })
 
@@ -35,7 +47,7 @@ concertRouter.put('/concert/:id', (req, res) => {
 concertRouter.post('/concert', (req, res) => {
   concertApi.createConcert(req.body)
   .then((createdConcert) => {
-    res.render(createdConcert)
+    res.redirect("/concert")
   }) 
 })
 
@@ -43,7 +55,7 @@ concertRouter.post('/concert', (req, res) => {
 concertRouter.delete('/concert/:id', (req, res) => {
   concertApi.deleteConcert(req.params.id)
   .then((deletedConcert) => {
-    res.render(deletedConcert)
+    res.redirect("/concert")
   })
 })
 
