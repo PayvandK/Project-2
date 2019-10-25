@@ -25,7 +25,7 @@ userRouter.get('/user', (req, res) => {
 })
 
 //getOne
-userRouter.get('/user/edit/:id', (req, res) => {
+userRouter.get('/user/:id', (req, res) => {
     userApi.getOneUser(req.params.id)
     .then((singleUser) => {
         concertApi.getAllConcertsByUserId(req.params.id)

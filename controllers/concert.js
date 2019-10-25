@@ -1,6 +1,7 @@
 const express = require('express')
 
 const concertApi = require('../models/concert.js')
+const userApi = require('../models/user.js')
 
 const concertRouter = express.Router()
 
