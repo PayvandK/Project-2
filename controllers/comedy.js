@@ -1,6 +1,6 @@
 const express = require('express')
 
-const coomedyApi = require('../models/comedy.js')
+const comedyApi = require('../models/comedy.js')
 const userApi = require('../models/user.js')
 
 const comedyRouter = express.Router()
@@ -63,6 +63,8 @@ comedyRouter.delete('/comedy/:id', (req, res) => {
 
 module.exports = {
   comedyRouter,
+  comedyApi,
+  userApi,
   updatedShow,
   createdShow,
   deletedShow
