@@ -1,12 +1,9 @@
-<form method="POST" action="/concert>">
+<h1>Create New User</h1>
 
-  <!--
-    Template for creating input form for a string object key called stringMember
-    NOTE: for numeric input fields use `type="number"`
-  --->
-  <input type="text" value="{{<TODO: model.stringMember (e.g: account.name)}}" placeholder="name" name="<TODO: stringMember (e.g: name)>" />
+<form action="/user" method="POST">
+    <input type="text" name="name" placeholder="Enter Name"/>
+    <input type="number" name="age" placeholder="Enter Age"/>
+    <input type="text" name="location" placeholder="Enter Location"/>
 
-  <input type="checkbox" name="<TODO: model.booleanMember (e.g: account.isActive)" value="true" />
-
-  <input type="submit" value="Create Shop" />
+    <input type="submit" value="Create"/>
 </form>

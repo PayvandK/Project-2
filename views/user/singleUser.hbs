@@ -1,10 +1,28 @@
-<h1>Welcome To Event Archives!</h1>
+<h1>{{singleUser.name}}</h1>
 
-<p>Are you an avid fan of live music, comedy and film? 
-    Do you have a box filled with old ticket stubs at home? 
-    Sometimes I wish could look back at a list of all the shows and 
-    events I've been to just to reminisce. 
-    That's why I've created Event Archives! The one-stop app where 
-    you and your friends can show off who and what you've seen live!</p>
 
-<a href="/models/user.js"
+<p>Age: {{singleUser.age}}</p>
+
+
+<a href="/user/edit/{{singleUser._id}}">
+    <button>
+    Edit User
+    </button>
+</a>
+
+<a href="/concert/new/{{singleUser._id}}">
+    <button>
+    Create Concert For User
+    </button>
+</a>
+
+
+
+<form action="/user/{{singleUser._id}}?_method=DELETE" method="POST">
+    <input type="submit" value="Delete User"/>
+</form>
+
+{{#each userConcerts}}
+    <p>{{name}}</p>
+    <img src="{{picture}}" height="250"/>
+{{/each}}

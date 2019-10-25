@@ -22,7 +22,7 @@ const getAllUsers = () => {
   return userCollection.find({})
 };
 
-const getUser = (id) => {
+const getOneUser = (id) => {
   return userCollection.findById(id)
 };
 
