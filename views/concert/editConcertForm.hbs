@@ -1,0 +1,11 @@
+<h1>Edit Concert</h1>
+
+<form action="/concert/{{singleConcert._id}}?_method=PUT" method="POST">
+    <input type="text" name="event" placeholder="event" value="{{singleConcert.event}}"/>
+    <input type="text" name="artist" placeholder="artist" value="{{singleConcert.artist}}"/>
+    <input type="date" name="date" placeholder="date" value="{{singleConcert.date}}"/>
+    <input type="text" name="location" placeholder="location" value="{{singleConcert.location}}"/>
+    <input type="text" name="experience" placeholder="experience" value="{{singleConcert.experience}}"/>
+
+    <input type="submit" value="Save"/>
+</form>

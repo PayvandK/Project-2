@@ -5,7 +5,7 @@ const concertSchema = new mongoose.Schema ({
     type: String,
     required: true
   },
-  band: {
+  artist: {
     type: String,
     required: true
   },

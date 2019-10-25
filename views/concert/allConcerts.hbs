@@ -1,0 +1,17 @@
+<h1>All Concerts</h1>
+
+<a href="/concert/new">
+    <button>
+        Create New Concert
+    </button>
+</a>
+
+{{#each allConcerts}}
+    <a href="/concert/{{_id}}">
+        <p>{{name}}</p>
+
+        {{#if picture}}
+            <img src={{picture}} height=250 width="auto"/>
+        {{/if}}
+    </a>
+{{/each}}
