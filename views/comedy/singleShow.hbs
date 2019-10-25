@@ -1,0 +1,21 @@
+<h1>{{singleShow.comedian}}</h1>
+
+<p>Date: {{singleShow.date}}</p>
+<p>Location: {{singleShow.location}}</p>
+<p>Experience: {{singleShow.experience}}</p>
+<p>Picture:
+     {{#if singleMovie.picture}}
+        <img src="{{singleMovie.picture}}" height=250/>
+    {{/if}}
+</p>
+
+<a href="/comedy/edit/{{singleShow._id}}">
+    <button>
+    Edit Comedy Show
+    </button>
+</a>
+
+
+<form action="/comedy/{{singleShow._id}}?_method=DELETE" method="POST">
+    <input type="submit" value="Delete Show"/>
+</form>

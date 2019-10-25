@@ -62,5 +62,8 @@ comedyRouter.delete('/comedy/:id', (req, res) => {
 
 
 module.exports = {
-  comedyRouter
+  comedyRouter,
+  updatedShow,
+  createdShow,
+  deletedShow
 }

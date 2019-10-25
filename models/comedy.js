@@ -12,7 +12,8 @@ const comedySchema = new mongoose.Schema ({
   location: {
     type: String,
     required: true
-  }
+  },
+  experience: String
 })
 
 const comedyCollection = mongoose.model('comedy', comedySchema)
@@ -42,7 +43,7 @@ const deleteShow = (id) => {
 }
 
 module.exports = {
-  getAllAShows,
+  getAllShows,
   getAllShowsByUserId,
   getOneShow, 
   createShow,

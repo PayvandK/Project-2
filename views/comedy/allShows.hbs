@@ -1,0 +1,17 @@
+<h1>All Comedy Shows</h1>
+
+<a href="/comedy/new">
+    <button>
+        Create New Comedy Show
+    </button>
+</a>
+
+{{#each allShows}}
+    <a href="/comedy/{{_id}}">
+        <p>{{name}}</p>
+
+        {{#if picture}}
+            <img src={{picture}} height=250 width="auto"/>
+        {{/if}}
+    </a>
+{{/each}}

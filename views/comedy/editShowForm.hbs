@@ -1,0 +1,10 @@
+<h1>Edit Comedy Show</h1>
+
+<form action="/comedy/{{singleShow._id}}?_method=PUT" method="POST">
+    <input type="text" name="comedian" placeholder="comedian" value="{{singleShow.comedian}}"/>
+    <input type="date" name="date" placeholder="date" value="{{singleShow.date}}"/>
+    <input type="text" name="location" placeholder="location" value="{{singleShow.location}}"/>
+    <input type="text" name="experience" placeholder="experience" value="{{singleShow.experience}}"/>
+
+    <input type="submit" value="Save"/>
+</form>
